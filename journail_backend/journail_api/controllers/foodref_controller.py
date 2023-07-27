@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request, abort
-from journail_backend.database.database import db, FoodRef
-from journail_backend.num_utils import is_number
-from journail_backend.database.food_ref_service import save_food_ref_from_json
+from journail_api.database.database import db, FoodRef
+from journail_api.num_utils import is_number
+from journail_api.database.food_ref_service import save_food_ref_from_json
 
 foodref_bp = Blueprint('foodref', __name__)
 
@@ -27,7 +27,7 @@ def get_all_food_refs():
         food_refs = FoodRef.query.all()
 
         # Convert each FoodRef object to JSON format
-        food_refs_json = [food_ref.to_json() for food_ref in food_refs]
+        food_refs_json = None if food_refs is None else [food_ref.to_json() for food_ref in food_refs]
 
         # Return a JSON response with all FoodRef objects
         return jsonify(food_refs_json), 200

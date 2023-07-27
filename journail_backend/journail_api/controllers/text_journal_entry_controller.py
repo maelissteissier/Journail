@@ -1,6 +1,6 @@
 from datetime import datetime, date, timedelta
 from flask import Blueprint, jsonify, request
-from journail_backend.database.database import db, TextJournalEntry
+from journail_api.database.database import db, TextJournalEntry
 
 textJournalEntry_bp = Blueprint('textJournalEntry', __name__)
 

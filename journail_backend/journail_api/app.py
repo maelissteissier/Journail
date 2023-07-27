@@ -1,14 +1,14 @@
 from flask import Flask
-from journail_backend.database.database import configure_database
-from journail_backend.controllers.foodref_controller import foodref_bp
-from journail_backend.controllers.food_journal_entry_controller import foodJournalEntry_bp
-from journail_backend.controllers.text_journal_entry_controller import textJournalEntry_bp
+from journail_api.database.database import configure_database
+from journail_api.controllers.foodref_controller import foodref_bp
+from journail_api.controllers.food_journal_entry_controller import foodJournalEntry_bp
+from journail_api.controllers.text_journal_entry_controller import textJournalEntry_bp
 from flask_cors import CORS
 import os
 
 
 # Create the Flask app instance
-from journail_backend.controllers.journal_category_controller import journalCategory_bp
+from journail_api.controllers.journal_category_controller import journalCategory_bp
 
 app = Flask(__name__)
 # Configure the database

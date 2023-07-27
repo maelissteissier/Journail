@@ -1,5 +1,5 @@
-from journail_backend.database.database import FoodRef
-from journail_backend.num_utils import is_number
+from journail_api.database.database import FoodRef
+from journail_api.num_utils import is_number
 
 
 def save_food_ref_from_json(json_data, database):

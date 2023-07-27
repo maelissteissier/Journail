@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request, abort
-from journail_backend.database.database import db, FoodJournalEntry, JournalCategory, FoodRef
-from journail_backend.database.food_ref_service import save_food_ref_from_json
-from journail_backend.num_utils import is_number
+from journail_api.database.database import db, FoodJournalEntry, JournalCategory, FoodRef
+from journail_api.database.food_ref_service import save_food_ref_from_json
+from journail_api.num_utils import is_number
 from datetime import datetime, timedelta
 import pytz
 
@@ -30,46 +30,49 @@ def create_food_journal_entry():
 def food_journal_entry_validation(food_journal_entry_json):
     errors = []
     new_entry = None
-    # FoodEntry journal_category should always be food
+    # FoodEntry journal_category should always be food for the food journal
     journal_category = JournalCategory.query.filter(JournalCategory.name == 'food').first()
 
     # If the JournalCategory doesn't exist (required)
     if journal_category is None:
-        errors.append('JournalCategory not found')
-    else:
-        # FoodRef isn't required. If new, we save it
-        food_ref_dict = food_journal_entry_json.get('food_ref', None)
-        food_ref_sql = None
-        # Food_ref received
-        if food_ref_dict is not None:
-            food_ref_saved, errs = save_food_ref_from_json(food_ref_dict, db)
-            if errs is not None:
-                errors.extend(errs['errors'])
-            else:
-                food_ref_sql = food_ref_saved
-        try:
-            entry_date_utc = datetime.strptime(food_journal_entry_json['date'], "%Y-%m-%dT%H:%M:%S.%fZ").replace(tzinfo=pytz.UTC)
-            new_entry = FoodJournalEntry(
-                date=entry_date_utc,
-                quantity=food_journal_entry_json.get('quantity', ""),
-                quantity_type=food_journal_entry_json.get('quantity_type', ""),
-                calories=food_journal_entry_json.get('calories', ""),
-                thoughts=food_journal_entry_json.get('thoughts', ""),
-                name=food_journal_entry_json.get('name', ""),
-                foodRef=food_ref_sql,
-                journalCategory=journal_category
-            )
+        new_journal_category = JournalCategory(name='food')
+        db.session.add(new_journal_category)
+        db.session.commit()
+        journal_category = JournalCategory.query.filter(JournalCategory.name == 'food').first()
 
-            if new_entry.calories == "":
-                errors.append("calories must not be empty")
-            if new_entry.name == "":
-                errors.append("foodname must not be empty")
+    # FoodRef isn't required. If new, we save it
+    food_ref_dict = food_journal_entry_json.get('food_ref', None)
+    food_ref_sql = None
+    # Food_ref received
+    if food_ref_dict is not None:
+        food_ref_saved, errs = save_food_ref_from_json(food_ref_dict, db)
+        if errs is not None:
+            errors.extend(errs['errors'])
+        else:
+            food_ref_sql = food_ref_saved
+    try:
+        entry_date_utc = datetime.strptime(food_journal_entry_json['date'], "%Y-%m-%dT%H:%M:%S.%fZ").replace(tzinfo=pytz.UTC)
+        new_entry = FoodJournalEntry(
+            date=entry_date_utc,
+            quantity=food_journal_entry_json.get('quantity', ""),
+            quantity_type=food_journal_entry_json.get('quantity_type', ""),
+            calories=food_journal_entry_json.get('calories', ""),
+            thoughts=food_journal_entry_json.get('thoughts', ""),
+            name=food_journal_entry_json.get('name', ""),
+            foodRef=food_ref_sql,
+            journalCategory=journal_category
+        )
 
-            if (not is_number(new_entry.quantity) and new_entry.quantity != None) \
-                    or not is_number(new_entry.calories):
-                errors.append('original_calory or original_quantity not a number')
-        except ValueError:
-            errors.append('Invalid date format')
+        if new_entry.calories == "":
+            errors.append("calories must not be empty")
+        if new_entry.name == "":
+            errors.append("foodname must not be empty")
+
+        if (not is_number(new_entry.quantity) and new_entry.quantity != None) \
+                or not is_number(new_entry.calories):
+            errors.append('original_calory or original_quantity not a number')
+    except ValueError:
+        errors.append('Invalid date format')
     return new_entry, None if len(errors) == 0 else errors
 
 

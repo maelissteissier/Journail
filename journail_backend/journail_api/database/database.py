@@ -31,18 +31,7 @@ class FoodRef(db.Model):
             'quantity_type': self.quantity_type
         }
 
-
-# class MealRef(db.Model):
-#     id = db.Column(db.Integer, primary_key=True)
-#     name = db.Column(db.String(80), nullable=False, unique=True)
-#
-#     def to_json(self):
-#         return {
-#             'id': self.id,
-#             'name': self.name
-#         }
-
-
+# Will be used later for different type of journaling (next step of the app)
 class JournalCategory(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(80), nullable=False, unique=True)

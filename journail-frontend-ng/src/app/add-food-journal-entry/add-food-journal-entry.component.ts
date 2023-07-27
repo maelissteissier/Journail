@@ -22,7 +22,7 @@ export class AddFoodJournalEntryComponent {
     isFoodEntrySentFailToastShow: boolean = false;
     failMessage: string = "";
     saveFoodSucceeded: boolean = false;
-    page:Page = Page.ADD_JOURNAL_ENTRY;
+    page: Page = Page.ADD_JOURNAL_ENTRY;
 
     enableQuickAdd(): void {
         this.quickAdd = true;
@@ -44,9 +44,14 @@ export class AddFoodJournalEntryComponent {
                 },
                 error: (error) => {
                     this.isFoodEntrySentFailToastShow = true;
-                    this.failMessage = error.error.errors.reduce((acc: string, str: string) => {
-                        return `${acc}\n${str}`;
-                    });
+                    if (error.error.errors) {
+                        this.failMessage = error.error.errors.reduce((acc: string, str: string) => {
+                            return `${acc}\n${str}`;
+                        });
+                    } else {
+                        this.failMessage = error.error.toString();
+                    }
+
                     setTimeout(() => {
                         this.isFoodEntrySentFailToastShow = false;
                     }, TOAST_LONG_TIMEOUT);

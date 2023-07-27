@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, request, abort
-from journail_backend.database.database import db, JournalCategory
+from journail_api.database.database import db, JournalCategory
 
 journalCategory_bp = Blueprint('journalCategory', __name__)
 
