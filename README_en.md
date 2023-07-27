@@ -22,11 +22,11 @@ The script `LOCAL_DEV_launch_all.sh` launches the frontend and the backend at th
 - then edit the configuration and add those environement variables :
 PYTHONUNBUFFERED=1;  
 CORS_ORIGIN_LOCALHOST=http://localhost:3000;  
-CORS_ORIGIN_LOCAL_IP=http://[`YOUR LOCAL NETWORK IP`]:3000;   
-SQLALCHEMY_DATABASE_URI=sqlite://///[`ABSOLUTE PATH TO THE APP`]/journail/journail_backend/journail_local_dev.db;  
-CORS_ORIGIN_LOCAL_IP_ANGULAR=http://[`YOUR LOCAL NETWORK IP`]:4200;  
+CORS_ORIGIN_LOCAL_IP=http://`[YOUR LOCAL NETWORK IP]`:3000;   
+SQLALCHEMY_DATABASE_URI=sqlite://///`[ABSOLUTE PATH TO THE APP]`/journail/journail_backend/journail_local_dev.db;  
+CORS_ORIGIN_LOCAL_IP_ANGULAR=http://`[YOUR LOCAL NETWORK IP]`:4200;  
 CORS_ORIGIN_LOCALHOST_ANGULAR=http://localhost:4200;  
-PYTHONPATH=[`ABSOLUTE PATH TO THE APP`]/journail/journail_backend:[`ABSOLUTE PATH TO THE APP`]/journail/journail_backend/journail_api:$PYTHONPATH
+PYTHONPATH=`[ABSOLUTE PATH TO THE APP]`/journail/journail_backend:`[ABSOLUTE PATH TO THE APP]`/journail/journail_backend/journail_api:$PYTHONPATH
 
 #### Frontend
 - In the terminal go to the `journail-frontend-ng` directory.  

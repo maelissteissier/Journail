@@ -21,11 +21,11 @@ Le script `LOCAL_DEV_launch_all.sh` lance simultanément le frontend et le backe
 - Ensuite, modifiez la configuration et ajoutez ces variables d'environnement :
 PYTHONUNBUFFERED=1;  
 CORS_ORIGIN_LOCALHOST=http://localhost:3000;  
-CORS_ORIGIN_LOCAL_IP=http://[`VOTRE ADRESSE IP DU RÉSEAU LOCAL`]:3000;   
-SQLALCHEMY_DATABASE_URI=sqlite://///[`CHEMIN ABSOLU VERS L'APPLICATION`]/journail/journail_backend/journail_local_dev.db;  
-CORS_ORIGIN_LOCAL_IP_ANGULAR=http://[`VOTRE ADRESSE IP DU RÉSEAU LOCAL`]:4200;  
+CORS_ORIGIN_LOCAL_IP=http://`[VOTRE ADRESSE IP DU RÉSEAU LOCAL]`:3000;   
+SQLALCHEMY_DATABASE_URI=sqlite://///`[CHEMIN ABSOLU VERS L'APPLICATION]`/journail/journail_backend/journail_local_dev.db;  
+CORS_ORIGIN_LOCAL_IP_ANGULAR=http://`[VOTRE ADRESSE IP DU RÉSEAU LOCAL]`:4200;  
 CORS_ORIGIN_LOCALHOST_ANGULAR=http://localhost:4200;  
-PYTHONPATH=[`CHEMIN ABSOLU VERS L'APPLICATION`]/journail/journail_backend:[`CHEMIN ABSOLU VERS L'APPLICATION`]/journail/journail_backend/journail_api:$PYTHONPATH
+PYTHONPATH=`[CHEMIN ABSOLU VERS L'APPLICATION]`/journail/journail_backend:`[CHEMIN ABSOLU VERS L'APPLICATION]`/journail/journail_backend/journail_api:$PYTHONPATH
 
 #### Frontend
 - Dans le terminal, accédez au répertoire `journail-frontend-ng`.
