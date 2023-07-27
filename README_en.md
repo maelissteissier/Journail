@@ -1,5 +1,5 @@
 # JOURNAIL
-[French documentation here](README.md)
+[Documentation française içi](README.md)
 
 Food journaling and calorie counter web application
 
