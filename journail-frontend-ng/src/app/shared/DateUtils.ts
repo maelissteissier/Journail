@@ -59,13 +59,4 @@ export default class DateUtils {
         var dateString = this.getDateStringFromDatetime(datetime);
         return new Date(this.getUTCDateStringFromDateAndTime(dateString, newTime));
     }
-
-// export function getDatetimeFromOnlyTimeString(timeString) {
-//     var newDate = new Date();
-//     var timeComponents = timeString.split(':');
-//     var hours = parseInt(timeComponents[0]);
-//     var minutes = parseInt(timeComponents[1]);
-//     newDate.setHours(hours, minutes, 0);
-//     return newDate
-// }
 }

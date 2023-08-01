@@ -17,11 +17,6 @@ export class HomeComponent {
     faPen = faPen;
     faHouseChimney = faHouseChimney;
 
-    handleButtonClick(): void {
-        alert('Button clicked!');
-        // Perform additional actions or logic here
-    }
-
     goToAddFoodJournalEntry() {
         this.router.navigate(["add-food-journal-entry"])
     }

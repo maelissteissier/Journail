@@ -14,7 +14,7 @@ echo $PYTHONPATH
 export CORS_ORIGIN_LOCALHOST_ANGULAR='http://localhost:4200'
 export CORS_ORIGIN_LOCAL_IP_ANGULAR='http://'$LOCAL_NETWORK_IP':4200'
 export FLASK_PORT='5000'
-export SQLALCHEMY_DATABASE_URI='sqlite:////'$BACKEND_DIR'/journail_local_dev.db'
+export SQLALCHEMY_DATABASE_URI='sqlite:////'$BACKEND_DIR'/database/journail_local_dev.db'
 /usr/local/bin/python3.9 $API_DIR"/app.py" &
 
 # Launch angular frontend

@@ -10,7 +10,7 @@ Content-Type: application/json
 
 ###
 
-POST http://localhost:5000/foodrefs
+POST http://localhost:5000/api/foodrefs
 Content-Type: application/json
 
 {
@@ -21,7 +21,7 @@ Content-Type: application/json
 
 ###
 
-POST http://localhost:5000/foodrefs
+POST http://localhost:5000/api/foodrefs
 Content-Type: application/json
 
 {
@@ -32,7 +32,7 @@ Content-Type: application/json
 }
 
 ###
-POST http://localhost:5000/foodrefs
+POST http://localhost:5000/api/foodrefs
 Content-Type: application/json
 
 {
@@ -44,7 +44,7 @@ Content-Type: application/json
 
 ###
 
-POST http://localhost:5000/foodrefs
+POST http://localhost:5000/api/foodrefs
 Content-Type: application/json
 
 {
@@ -56,7 +56,7 @@ Content-Type: application/json
 
 ###
 
-PUT http://localhost:5000/foodrefs/2
+PUT http://localhost:5000/api/foodrefs/2
 Content-Type: application/json
 
 {
@@ -72,7 +72,7 @@ Origin: bla
 
 ###
 
-GET http://localhost:5000/foodrefs/6
+GET http://localhost:5000/api/foodrefs/6
 ###
 
 # FOOD JOURNAL ENTRY
@@ -100,7 +100,7 @@ Content-Type: application/json
 }
 
 ###
-POST http://localhost:5000/food-journal-entry
+POST http://localhost:5000/api/food-journal-entry
 Content-Type: application/json
 
 {   
@@ -118,7 +118,7 @@ Content-Type: application/json
 }
 
 ### 
-POST http://localhost:5000/food-journal-entry
+POST http://localhost:5000/api/food-journal-entry
 Content-Type: application/json
 
 {   
@@ -135,7 +135,7 @@ Content-Type: application/json
 }
 
 ###
-POST http://localhost:5000/food-journal-entry
+POST http://localhost:5000/api/food-journal-entry
 Content-Type: application/json
 
 {   
@@ -152,16 +152,16 @@ Content-Type: application/json
 }
 
 ###
-GET http://localhost:5000/food-journal-entries/
+GET http://localhost:5000/api/food-journal-entries/
 
 ###
-GET http://localhost:5000/food-journal-entries/date?date=2023-07-18
+GET http://localhost:5000/api/food-journal-entries/date?date=2023-07-18
 
 ###
 
 # JOURNAL CATEGORY
 
-POST http://localhost:5000/journal-category
+POST http://localhost:5000/api/journal-category
 Content-Type: application/json
 
 {
@@ -170,7 +170,7 @@ Content-Type: application/json
 
 ###
 
-POST http://localhost:9876/journal-category
+POST http://localhost:9876/api/journal-category
 Content-Type: application/json
 
 {
@@ -179,9 +179,9 @@ Content-Type: application/json
 
 ###
 
-GET http://localhost:5000/journal-category/1
+GET http://localhost:5000/api/journal-category/1
 
 ###
 
-GET http://localhost:5000/journal-categories
+GET http://localhost:5000/api/journal-categories
 

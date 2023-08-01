@@ -13,7 +13,6 @@ DEFAULT_TIMEZONE = -4
 # POST new entry
 @foodJournalEntry_bp.route('/api/food-journal-entry', methods=['POST'])
 def create_food_journal_entry():
-    print("AQGAGAGAGAGAGAGAGGAGGGAGAGAGAGGAGAGAGGAGAGAGAGGAGAGAGGAGAGAGGAGAGAG")
     if not request.json:
         abort(400)
 
@@ -32,7 +31,7 @@ def create_food_journal_entry():
 def food_journal_entry_validation(food_journal_entry_json):
     errors = []
     new_entry = None
-    # FoodEntry journal_category should always be food for the food journal
+    # FoodEntry journal_category should always be "food" for the food journal
     journal_category = JournalCategory.query.filter(JournalCategory.name == 'food').first()
 
     # If the JournalCategory doesn't exist (required)

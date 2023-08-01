@@ -12,7 +12,6 @@ export class FoodJournalEntry {
   food_ref: FoodRef | null;
   journal_category: JournalCategory;
 
-  // Complete constructor
     constructor(
         id: number | null,
         date: string,

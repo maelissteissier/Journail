@@ -12,7 +12,6 @@ import {CaloriesCalculatorComponent} from './calories-calculator/calories-calcul
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
-import { AppLayoutComponent } from './app-layout/app-layout.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import { FoodRefListModalComponent } from './food-ref-list-modal/food-ref-list-modal.component';
 import { FoodRefListComponent } from './food-ref-list/food-ref-list.component';
@@ -31,7 +30,6 @@ import { DeleteFoodEntryModalComponent } from './delete-food-entry-modal/delete-
         QuickAddFoodLogComponent,
         CalculatorAddFoodLogComponent,
         CaloriesCalculatorComponent,
-        AppLayoutComponent,
         FoodRefListModalComponent,
         FoodRefListComponent,
         AddFoodRefModalComponent,

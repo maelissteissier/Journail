@@ -26,11 +26,9 @@ def get_entries_by_date():
     else:
         query_date = date.today()
 
-    # Query the database for entries matching the specified date
     entries = TextJournalEntry.query.filter(TextJournalEntry.date >= query_date,
                                             TextJournalEntry.date < query_date + timedelta(days=1)).all()
 
-    # Convert entries to JSON format
     entries_json = [entry.to_json() for entry in entries]
 
     return jsonify(entries_json), 200

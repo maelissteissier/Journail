@@ -1,8 +1,6 @@
 import {Component} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
 import {FoodJournalEntry} from "../shared/models/food-journal-entry";
 import {FoodJournalEntryService} from "../shared/services/food-journal-entry.service";
-import {reduce} from "rxjs";
 import {TOAST_LONG_TIMEOUT, TOAST_SHORT_TIMEOUT} from "../shared/timeouts-config";
 import {Page} from "../shared/models/page";
 
