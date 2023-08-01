@@ -1,0 +1,7 @@
+2023/07/29 09:11:41 [error] 23919#0: *1 "/frontendindex.html" is not found (2: No such file or directory), client: 127.0.0.1, server: , request: "GET / HTTP/1.1", host: "localhost:8080"
+2023/07/29 09:11:41 [error] 23919#0: *1 open() "/frontendfavicon.ico" failed (2: No such file or directory), client: 127.0.0.1, server: , request: "GET /favicon.ico HTTP/1.1", host: "localhost:8080", referrer: "http://localhost:8080/"
+2023/07/29 09:12:06 [error] 23919#0: *1 open() "/frontendindex.html" failed (2: No such file or directory), client: 127.0.0.1, server: , request: "GET /index.html HTTP/1.1", host: "localhost:8080"
+2023/07/29 09:12:18 [error] 23919#0: *1 open() "/frontendhome" failed (2: No such file or directory), client: 127.0.0.1, server: , request: "GET /home HTTP/1.1", host: "localhost:8080"
+2023/08/01 15:37:05 [error] 23919#0: *3 "/frontendindex.html" is not found (2: No such file or directory), client: 127.0.0.1, server: , request: "GET / HTTP/1.1", host: "localhost:8080"
+2023/08/01 15:39:07 [error] 23919#0: *5 "/frontendindex.html" is not found (2: No such file or directory), client: 127.0.0.1, server: , request: "GET / HTTP/1.1", host: "localhost:8080"
+2023/08/01 15:39:11 [error] 23919#0: *5 "/frontendindex.html" is not found (2: No such file or directory), client: 127.0.0.1, server: , request: "GET / HTTP/1.1", host: "localhost:8080"

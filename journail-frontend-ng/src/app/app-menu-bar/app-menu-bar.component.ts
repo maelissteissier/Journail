@@ -29,7 +29,7 @@ export class AppMenuBarComponent {
     }
 
     goToHome(){
-            this.router.navigate(["home"])
+            this.router.navigate([""])
     }
 
     goToFoodRefList(){

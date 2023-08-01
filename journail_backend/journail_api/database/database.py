@@ -5,6 +5,7 @@ db = SQLAlchemy()
 
 
 def configure_database(app, database_uri):
+    print(database_uri)
     app.config['SQLALCHEMY_DATABASE_URI'] = database_uri
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     app.config['SQLALCHEMY_ECHO'] = True

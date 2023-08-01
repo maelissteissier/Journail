@@ -5,7 +5,25 @@ Food journaling and calorie counter web application
 
 ![Journail App](images/presentation.png)
 
-## Dev mode : build and launch
+## PROD Mode with Docker
+### Dependencies:
+- Node (v19.4.0 used for this project): for compilation
+- Docker
+- Make
+
+### Compilation and Launching
+Execute the command:
+```shell
+make start
+```
+
+This command uses `make` to compile the Angular application in 
+***production mode*** (extracts static files), then compiles the 
+Docker containers for the `Flask` API and the `nginx` server that 
+serves both the backend and frontend applications. It then launches both containers with `docker-compose`.
+
+
+## DEV mode : build and launch
 
 ### Launch from script
 
@@ -16,7 +34,8 @@ The script `LOCAL_DEV_launch_all.sh` launches the frontend and the backend at th
 - You might need to uncomment the installing of Angular CLI and modules the first time but then you can comment them again.  
 - In the file `journail/journail-frontend-ng/src/environment.prod.ts` change the IP for your own local network IP.  
 
-### Lauch from Jetbrain
+### Launching from Jetbrain
+***This mode allows launching the application in debug mode with JetBrains tools.***
 #### Backend
 - Right click on the app.py file then press play.
 - then edit the configuration and add those environement variables :

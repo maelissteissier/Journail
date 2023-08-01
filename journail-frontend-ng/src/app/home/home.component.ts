@@ -31,7 +31,7 @@ export class HomeComponent {
     }
 
     goToHome(){
-            this.router.navigate(["home"])
+            this.router.navigate([""])
     }
 
     goToFoodRefList(){

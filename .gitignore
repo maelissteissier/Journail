@@ -2,4 +2,4 @@
 journailing-frontend/src/fonts/
 node_modules/
 .DS_Store
-
+nginx_server/journail_frontend_build

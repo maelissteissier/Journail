@@ -5,7 +5,24 @@ Application web de journal alimentaire et calculateur de calories.
 
 ![Journail App](images/presentation.png)
 
-## Mode dev : compilation et lancement 
+## Mode PROD avec docker
+### Dépendances : 
+- Node (v19.4.0 utilisée pour ce projet) : pour compiler 
+- Docker
+- Make
+
+### Compilation et Lancement
+executer la commande :
+```shell
+make start
+```
+
+Cette commande utilise `make` pour compiler 
+l'application Angular en ***mode production*** (extrait les fichiers statiques) puis compile les conteneurs docker de l'API `Flask` et du
+serveur `ngnix` qui sert les deux applications (backend et frontend).
+Elle lance ensuite les deux conteneurs avec `docker-compose`.
+
+## Mode DEV : compilation et lancement 
 ### Lancement à partir du script
 
 Le script `LOCAL_DEV_launch_all.sh` lance simultanément le frontend et le backend en mode développement.
@@ -16,6 +33,7 @@ Le script `LOCAL_DEV_launch_all.sh` lance simultanément le frontend et le backe
 - Dans le fichier `journail/journail-frontend-ng/src/environment.prod.ts`, remplacez l'adresse IP par celle de votre réseau local.
 
 ### Lancement depuis Jetbrains
+***Ce mode permettra de lancer l'application en mode debug avec les outils jetbrains***
 #### Backend
 - Cliquez droit sur le fichier `app.py`, puis cliquez sur "Lancer" (Play).
 - Ensuite, modifiez la configuration et ajoutez ces variables d'environnement :

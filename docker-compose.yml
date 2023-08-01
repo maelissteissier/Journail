@@ -1,0 +1,19 @@
+version: '3'
+services:
+  api:
+    build: journail_backend/journail_api
+    ports:
+      - "5000:5000"
+    environment:
+      - PYTHONPATH=/
+      - FLASK_PORT=5000
+      - SQLALCHEMY_DATABASE_URI=sqlite:////database/journail_prod.db
+#      - CORS_ORIGIN_LOCALHOST=http://localhost:4200
+    volumes:
+      - ./journail_backend/database:/database
+  server:
+    build: nginx_server
+    ports:
+      - "8080:8080"
+    depends_on:
+      - api

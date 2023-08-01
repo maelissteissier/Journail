@@ -13,12 +13,14 @@ DEFAULT_TIMEZONE = -4
 # POST new entry
 @foodJournalEntry_bp.route('/api/food-journal-entry', methods=['POST'])
 def create_food_journal_entry():
+    print("AQGAGAGAGAGAGAGAGGAGGGAGAGAGAGGAGAGAGGAGAGAGAGGAGAGAGGAGAGAGGAGAGAG")
     if not request.json:
         abort(400)
 
     data = request.json
 
     new_entry, errors = food_journal_entry_validation(data)
+
     if errors is not None:
         return jsonify({"errors": errors}), 400
     else:

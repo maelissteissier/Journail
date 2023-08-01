@@ -1,5 +1,5 @@
 # FOOD REF
-POST http://localhost:5000/foodrefs
+POST http://localhost:5000/api/foodrefs
 Content-Type: application/json
 
 {
@@ -67,7 +67,8 @@ Content-Type: application/json
 
 ###
 
-GET http://localhost:5000/foodrefs
+GET http://localhost:5000/api/foodrefs
+Origin: bla
 
 ###
 
@@ -76,7 +77,7 @@ GET http://localhost:5000/foodrefs/6
 
 # FOOD JOURNAL ENTRY
 
-POST http://localhost:5000/food-journal-entry
+POST http://localhost:5000/api/food-journal-entry
 Content-Type: application/json
 
 {   
