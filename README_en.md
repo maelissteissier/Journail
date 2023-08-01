@@ -22,6 +22,7 @@ This command uses `make` to compile the Angular application in
 Docker containers for the `Flask` API and the `nginx` server that 
 serves both the backend and frontend applications. It then launches both containers with `docker-compose`.
 
+A (french) database is pre-filled with foods and their true nutritional values for easy testing.
 
 ## DEV mode : build and launch
 

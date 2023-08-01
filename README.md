@@ -22,6 +22,8 @@ l'application Angular en ***mode production*** (extrait les fichiers statiques) 
 serveur `ngnix` qui sert les deux applications (backend et frontend).
 Elle lance ensuite les deux conteneurs avec `docker-compose`.
 
+Une base de donnée est préremplie avec des aliments et leur vraie valeur nutritionnelle pour tester facilement.
+
 ## Mode DEV : compilation et lancement 
 ### Lancement à partir du script
 
