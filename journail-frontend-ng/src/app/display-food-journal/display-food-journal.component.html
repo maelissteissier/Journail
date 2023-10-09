@@ -10,7 +10,17 @@
   <div class="caloriesStats">
     <div>
       <div class="calorieStatsLabel">objectif</div>
-      <div class="caloriesTotal">2100</div>
+      <div class="caloriesTotal" (click)="editCalorieGoal()" *ngIf="!calorieGoalEdit">{{ calorieGoal ? calorieGoal.calorie_goal : 2100}}</div>
+      <form [formGroup]="calorieGoalForm" class="calorieGoalFormContainer" *ngIf="calorieGoalEdit">
+          <input type="text"
+           placeholder=""
+           id="calorieGoal"
+           formControlName="calorieGoal"
+           required
+           class="caloriesTotal inputCalorieGoal">
+          <button class="caloriesTotal" (click)="onSubmitCalorieGoal()"><fa-icon [icon]="faCheck"></fa-icon></button>
+      </form>
+
     </div>
     <div>
       <div class="calorieStatsLabel">mangées</div>

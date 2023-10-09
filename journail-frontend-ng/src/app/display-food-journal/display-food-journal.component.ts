@@ -2,10 +2,13 @@ import {Component, OnInit} from '@angular/core';
 import {FoodJournalEntryService} from "../shared/services/food-journal-entry.service";
 import DateUtils from "../shared/DateUtils";
 import {FoodJournalEntry} from "../shared/models/food-journal-entry";
-import {faChevronLeft, faChevronRight, faCirclePlus} from "@fortawesome/free-solid-svg-icons";
+import {faCheck, faChevronLeft, faChevronRight, faCirclePlus} from "@fortawesome/free-solid-svg-icons";
 import {faEye} from "@fortawesome/free-regular-svg-icons"
 import {Router} from "@angular/router";
 import {Page} from "../shared/models/page";
+import {CalorieGoalService} from "../shared/services/calorie-goal.service";
+import {CalorieGoal} from "../shared/models/calorie-goal";
+import {FormControl, FormGroup} from "@angular/forms";
 
 interface LunchType {
     timeMin: string;
@@ -26,7 +29,10 @@ const LUNCH_TYPE: { [key: string]: LunchType } = {
     styleUrls: ['./display-food-journal.component.scss']
 })
 export class DisplayFoodJournalComponent implements OnInit {
-    constructor(private foodJournalEntryService: FoodJournalEntryService, private router: Router) {
+    constructor(private foodJournalEntryService: FoodJournalEntryService, private calorieGoalService: CalorieGoalService, private router: Router) {
+        this.calorieGoalForm = new FormGroup({
+            calorieGoal: new FormControl()
+        });
     }
 
     day: Date = new Date();
@@ -41,7 +47,11 @@ export class DisplayFoodJournalComponent implements OnInit {
     deleteModalShow: boolean = false;
     deletingFoodEntry!: FoodJournalEntry;
     isEditingFoodEntryQuick: boolean = false;
-    page:Page = Page.JOURNAL;
+    page: Page = Page.JOURNAL;
+    calorieGoal!: CalorieGoal ;
+    calorieGoalEdit = false;
+    calorieGoalForm: FormGroup;
+    faCheck = faCheck;
 
     ngOnInit() {
         this.setFoodJournalInfos(new Date());
@@ -52,6 +62,35 @@ export class DisplayFoodJournalComponent implements OnInit {
         this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
             this.router.navigate([currentUrl]);
         });
+    }
+
+    editCalorieGoal() {
+        this.calorieGoalEdit = true;
+        console.log("calorie goal in edit mode : ", this.calorieGoalEdit);
+
+    }
+
+    onSubmitCalorieGoal() {
+        const goal = parseInt(this.calorieGoalForm.value.calorieGoal);
+        console.log("calorie goal try to fetch :", goal, "value input :", this.calorieGoalForm.value.calorieGoal);
+        if (!isNaN(goal)){
+            this.calorieGoalService.saveCalorieGoal(new CalorieGoal(this.calorieGoalForm.value.calorieGoal)).subscribe({
+            next: (response) => {
+                console.log('Calorie goal posted successfully :', response);
+                this.displayCalorieGoal();
+            },
+            error: (error) => {
+                console.error('Error fetching calorie goal:', error);
+            }
+        });
+        } else{
+            console.log("Calorie goal must be an int");
+        }
+    }
+
+    displayCalorieGoal() {
+        this.calorieGoalEdit = false;
+        this.fetchLatestCalorieGoal();
     }
 
 
@@ -132,6 +171,19 @@ export class DisplayFoodJournalComponent implements OnInit {
                 console.error('Error fetching Food Journal Entries:', error);
             }
         });
+        this.fetchLatestCalorieGoal()
+    }
+
+    fetchLatestCalorieGoal(){
+                this.calorieGoalService.fetchLastCalorieGoal().subscribe({
+            next: (response) => {
+                console.log('Calorie goal fetches :', response);
+                this.calorieGoal = response as CalorieGoal;
+            },
+            error: (error) => {
+                console.error('Error fetching calorie goal:', error);
+            }
+        })
     }
 
     closeEditModal() {

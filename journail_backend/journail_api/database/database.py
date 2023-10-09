@@ -32,6 +32,7 @@ class FoodRef(db.Model):
             'quantity_type': self.quantity_type
         }
 
+
 # Will be used later for different type of journaling (next step of the app)
 class JournalCategory(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -92,4 +93,30 @@ class TextJournalEntry(db.Model):
         }
 
 
+class Weight(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    weight = db.Column(db.REAL, nullable=False)
+    unit = db.Column(db.String(5))
+    date = db.Column(db.DATETIME, nullable=False)
+
+    def to_json(self):
+        return {
+            'id': self.id,
+            'weight': self.weight,
+            'unit': self.unit,
+            'date': self.date.strftime("%Y-%m-%dT%H:%M:%SZ")
+        }
+
+
+class CalorieGoal(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    calorie_goal = db.Column(db.Integer, nullable=False)
+    date = db.Column(db.DATETIME, nullable=False)
+
+    def to_json(self):
+        return {
+            'id': self.id,
+            'calorie_goal': self.calorie_goal,
+            'date': self.date.strftime("%Y-%m-%dT%H:%M:%SZ")
+        }
 
