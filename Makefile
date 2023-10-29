@@ -9,3 +9,6 @@ build_all: build_frontend
 
 start: build_all
 	docker-compose up
+
+start_no_build:
+	docker-compose up

@@ -3,7 +3,7 @@ services:
   api:
     build: journail_backend/journail_api
     ports:
-      - "5000:5000"
+      - "5056:5000"
     environment:
       - PYTHONPATH=/
       - FLASK_PORT=5000
@@ -17,6 +17,6 @@ services:
   server:
     build: nginx_server
     ports:
-      - "8080:8080"
+      - "8086:8080"
     depends_on:
       - api
