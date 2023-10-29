@@ -10,6 +10,10 @@ services:
       - SQLALCHEMY_DATABASE_URI=sqlite:////database/journail_prod.db
     volumes:
       - ./journail_backend/database:/database
+  frontend:
+    build: journail-frontend-ng
+    volumes:
+      - ./nginx_server/journail_frontend_build_from_docker:/journail_frontend_build_from_docker
   server:
     build: nginx_server
     ports:
