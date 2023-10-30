@@ -21,3 +21,4 @@ services:
       - "8086:8080"
     depends_on:
       - api
+      - frontend
