@@ -13,7 +13,8 @@ services:
   frontend:
     build: journail-frontend-ng
     volumes:
-      - ./nginx_server/journail_frontend_build_from_docker:/journail_frontend_build_from_docker
+# docker run -it -v /Users/maelissteissier/JournailingApp/final_publish/journail/nginx_server/journail_frontend_build_from_docker:/journail_frontend_build_from_docker journail_frontend /bin/sh
+      - ./nginx_server/journail_frontend_build_from_docker:/journail_frontend_build_from_docker/
   server:
     build: nginx_server
     ports:

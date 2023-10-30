@@ -17,7 +17,7 @@ app = Flask(__name__)
 configure_database(app, os.environ.get('SQLALCHEMY_DATABASE_URI'))
 
 # Config for prod nginx_server
-CORS(app, resources={r"/api/*": {"origins": "http://localhost:8080"}})
+CORS(app, resources={r"/api/*": {"origins": "http://localhost:8086"}})
 
 # Config to activate for dev env
 # CORS(app, origins=[os.environ.get('CORS_ORIGIN_LOCALHOST'),
